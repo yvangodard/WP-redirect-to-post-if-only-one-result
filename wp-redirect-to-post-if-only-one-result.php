@@ -3,14 +3,17 @@
   Plugin Name:  Rediriger vers l’article si la recherche ou le tag ne retourne qu’un résultat
   Description:  Cette astuce permet d'améliorer la navigation de votre site en redirigeant vers le seul article d'une recherche fructueuse ou d'un tag. Au lieu de rediriger l’utilisateur vers la page de résultats de recherche et le laisser cliquer sur le lien de l’article, on va directement le rediriger vers l’article correspondant à sa recherche. Ce plugin s'appuie sur une astuce soumise par Jean-David DAVIET (http://goo.gl/TpXl0G).
   Plugin URI:   http://goo.gl/cMVVY7
-  Version:      1.2.1
+  Version:      1.2.2
   Author:       Yvan GODARD
   Author URI:   http://www.yvangodard.me
   Donate link:  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HJVNXAKDZ5WKE
   License:      GNU GPL V2 - https://www.gnu.org/licenses/gpl-2.0.html
 /*
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; 
+either version 2 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with this program; if not, write to:
 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
