@@ -14,6 +14,13 @@ You should have received a copy of the GNU General Public License along with thi
 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+defined( 'ABSPATH' ) or die( 'Cheatin\' uh?' );
+
+if( is_admin() ) {
+
+define( 'YGAUP_VERSION', '1.1' );
+define( 'YGAUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 add_action('template_redirect', 'redirect_search_to_single_post_result');
  
 function redirect_search_to_single_post_result() {
