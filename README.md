@@ -1,33 +1,35 @@
 #Redirect to post after a search, if there is only one result
-___
+===========
 
 This plugin is built in order to redirect directly to the post after a search if there is only one result.
 Initial code by [Jean-David DAVIET](http://goo.gl/TpXl0G).
 
 ##Installation process
-___
+===========
 To install this plugin :
 
-- download the [zipped file](https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result/archive/master.zip),
-- upload it on WordPress, through the "Plugins" menu in WordPress,
-- and activate it.
+* download the [zipped file](https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result/archive/master.zip),
+* upload it on WordPress, through the "Plugins" menu in WordPress,
+* and activate it.
 
 
 ##Changelog
-___
+===========
 ###1.1 (in development)
-- add auto-update feature
+* add auto-update feature
 
 ###1.0
-- Initial commit
+* initial commit
 
 ##Credits
-___
+===========
+
 This plugin uses a class built and maintained by [Joachim Kudish](http://jkudish.com/) in order to allow be updated whenever a new version of this plugin is pushed on GitHub. You can have a look to [this class here](https://github.com/jkudish/WordPress-GitHub-Plugin-Updater).
 
 
 ##License
-___
+===========
+
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
