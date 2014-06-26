@@ -38,7 +38,7 @@ if (is_admin()) { // note the use of is_admin() to double check that this is hap
         'github_url' => 'https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result', // the github url of your github repo
         'zip_url' => 'https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result/archive/master.zip', // the zip url of the github repo
         'sslverify' => true // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
-        'requires' => '3.5', // which version of WordPress does your plugin require?
+        'requires' => '3.6', // which version of WordPress does your plugin require?
         'tested' => '3.8', // which version of WordPress is your plugin tested up to?
         'readme' => 'actual_version.txt', // which file to use as the readme for the version number
         'access_token' => '', // Access private repositories by authorizing under Appearance > Github Updates when this example plugin is installed
