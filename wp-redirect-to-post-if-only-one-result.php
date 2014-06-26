@@ -31,7 +31,7 @@ function redirect_search_to_single_post_result() {
 
 if (is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
     $config = array(
-        'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
+        'slug' => 'wp-redirect-to-post-if-only-one-result', // this is the slug of your plugin
         'proper_folder_name' => 'WP-redirect-to-post-if-only-one-result-master', // this is the name of the folder your plugin lives in
         'api_url' => 'https://api.github.com/repos/yvangodard/WP-redirect-to-post-if-only-one-result', // the github API url of your github repo
         'raw_url' => 'https://raw.github.com/yvangodard/WP-redirect-to-post-if-only-one-result/master', // the github raw url of your github repo
