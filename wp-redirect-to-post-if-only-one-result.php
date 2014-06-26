@@ -36,7 +36,7 @@ function ygaup_github_plugin_updater()
 
   $config = array(
     'slug' => plugin_basename( __FILE__ ),
-    'proper_folder_name' => 'WP-redirect-to-post-if-only-one-result',
+    'proper_folder_name' => 'WP-redirect-to-post-if-only-one-result-master',
     'api_url' => 'https://api.github.com/repos/yvangodard/WP-redirect-to-post-if-only-one-result',
     'raw_url' => 'https://raw.github.com/yvangodard/WP-redirect-to-post-if-only-one-result/master',
     'github_url' => 'https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result',
@@ -52,7 +52,7 @@ function ygaup_github_plugin_updater()
 add_filter( 'plugins_api', 'ygaup_force_info', 11, 3 );
 function ygaup_force_info( $bool, $action, $args )
 {
-  if( $action=='plugin_information' && $args->slug=='WP-redirect-to-post-if-only-one-result' )
+  if( $action=='plugin_information' && $args->slug=='wp-redirect-to-post-if-only-one-result' )
     return new stdClass();
   return $bool;
 }
