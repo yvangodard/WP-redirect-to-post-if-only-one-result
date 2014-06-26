@@ -3,7 +3,7 @@
   Plugin Name:  Rediriger vers l’article si la recherche ou le tag ne retourne qu’un résultat
   Description:  Cette astuce permet d'améliorer la navigation de votre site en redirigeant vers le seul article d'une recherche fructueuse ou d'un tag. Au lieu de rediriger l’utilisateur vers la page de résultats de recherche et le laisser cliquer sur le lien de l’article, on va directement le rediriger vers l’article correspondant à sa recherche. Ce plugin s'appuie sur une astuce soumise par Jean-David DAVIET (http://goo.gl/TpXl0G).
   Plugin URI:   http://goo.gl/cMVVY7
-  Version:      1.2
+  Version:      1.2.1
   Author:       Yvan GODARD
   Author URI:   http://www.yvangodard.me
   Donate link:  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HJVNXAKDZ5WKE
@@ -16,19 +16,6 @@ Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110
 */
 
 include( 'updater.php' );
-
-add_action('template_redirect', 'redirect_search_to_single_post_result');
- 
-function redirect_search_to_single_post_result() {
-    if( is_search() || is_tag() ) {
-        global $wp_query;
-        if ($wp_query->post_count == 1) {
-            if( $wp_query->posts['0']->post_type == 'post' ){
-                wp_redirect( get_permalink( $wp_query->posts['0']->ID ) );
-            }
-        }
-    }
-}
 
 if (is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
     $config = array(
@@ -45,4 +32,17 @@ if (is_admin()) { // note the use of is_admin() to double check that this is hap
         'access_token' => '', // Access private repositories by authorizing under Appearance > Github Updates when this example plugin is installed
     );
     new WP_GitHub_Updater($config);
+}
+
+add_action('template_redirect', 'redirect_search_to_single_post_result');
+ 
+function redirect_search_to_single_post_result() {
+    if( is_search() || is_tag() ) {
+        global $wp_query;
+        if ($wp_query->post_count == 1) {
+            if( $wp_query->posts['0']->post_type == 'post' ){
+                wp_redirect( get_permalink( $wp_query->posts['0']->ID ) );
+            }
+        }
+    }
 }

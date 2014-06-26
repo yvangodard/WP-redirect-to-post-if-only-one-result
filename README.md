@@ -15,7 +15,7 @@ To install this plugin :
 
 ##Changelog
 ===========
-###1.1 (in development)
+###1.2.1 (in development)
 * add auto-update feature
 
 ###1.0
