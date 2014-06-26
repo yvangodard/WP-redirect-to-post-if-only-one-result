@@ -14,12 +14,7 @@ You should have received a copy of the GNU General Public License along with thi
 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-defined( 'ABSPATH' ) or die( 'Cheatin\' uh?' );
-
-if( is_admin() ) {
-
-define( 'YGAUP_VERSION', '1.1' );
-define( 'YGAUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+include_once('/inc/updater.php');
 
 add_action('template_redirect', 'redirect_search_to_single_post_result');
  
@@ -34,48 +29,19 @@ function redirect_search_to_single_post_result() {
     }
 }
 
-add_action( 'admin_init', 'ygaup_github_plugin_updater' );
-function ygaup_github_plugin_updater()
-{
-  define( 'WP_GITHUB_FORCE_UPDATE', true );
-  include_once( dirname( __FILE__ ) . '/inc/updater.php' );
-  include_once( dirname( __FILE__ ) . '/inc/pointers.php' );
-
-  $config = array(
-    'slug' => plugin_basename( __FILE__ ),
-    'proper_folder_name' => 'WP-redirect-to-post-if-only-one-result-master',
-    'api_url' => 'https://api.github.com/repos/yvangodard/WP-redirect-to-post-if-only-one-result',
-    'raw_url' => 'https://raw.github.com/yvangodard/WP-redirect-to-post-if-only-one-result/master',
-    'github_url' => 'https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result',
-    'zip_url' => 'https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result/archive/master.zip',
-    'sslverify' => true,
-    'requires' => '3.5',
-    'tested' => '3.8',
-    'readme' => 'readme.txt',
-    'access_token' => '',
-  );
-  new WP_GitHub_Updater( $config );
-
-add_filter( 'plugins_api', 'ygaup_force_info', 11, 3 );
-function ygaup_force_info( $bool, $action, $args )
-{
-  if( $action=='plugin_information' && $args->slug=='wp-redirect-to-post-if-only-one-result' )
-    return new stdClass();
-  return $bool;
-}
-
-add_filter( 'plugins_api_result', 'ygaup_force_info_result', 10, 3 );
-function ygaup_force_info_result( $res, $action, $args )
-{
-  if( $action=='plugin_information' && $args->slug=='wp-redirect-to-post-if-only-one-result' && isset( $res->external ) && $res->external ) {
-    $request = wp_remote_get( 'https://raw.github.com/yvangodard/WP-redirect-to-post-if-only-one-result/master/plugin_infos.txt', array( 'timeout' => 30 ) );
-    if ( is_wp_error( $request ) ) {
-      $res = new WP_Error('plugins_api_failed', '1) '.__( 'An unexpected error occurred. Something may be wrong with Auto Updates Manager or this server&#8217;s configuration.' ), $request->get_error_message() );
-    } else {
-      $res = maybe_unserialize( wp_remote_retrieve_body( $request ) );
-      if ( ! is_object( $res ) && ! is_array( $res ) )
-        $res = new WP_Error('plugins_api_failed', '2) '.__( 'An unexpected error occurred. Something may be wrong with Auto Updates Manager or this server&#8217;s configuration.' ), wp_remote_retrieve_body( $request ) );
-    }
-  }
-  return $res;
+if (is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
+    $config = array(
+        'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
+        'proper_folder_name' => 'WP-redirect-to-post-if-only-one-result-master', // this is the name of the folder your plugin lives in
+        'api_url' => 'https://api.github.com/repos/yvangodard/WP-redirect-to-post-if-only-one-result', // the github API url of your github repo
+        'raw_url' => 'https://raw.github.com/yvangodard/WP-redirect-to-post-if-only-one-result/master', // the github raw url of your github repo
+        'github_url' => 'https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result', // the github url of your github repo
+        'zip_url' => 'https://github.com/yvangodard/WP-redirect-to-post-if-only-one-result/archive/master.zip', // the zip url of the github repo
+        'sslverify' => true // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
+        'requires' => '3.5', // which version of WordPress does your plugin require?
+        'tested' => '3.8', // which version of WordPress is your plugin tested up to?
+        'readme' => 'actual_version.txt', // which file to use as the readme for the version number
+        'access_token' => '', // Access private repositories by authorizing under Appearance > Github Updates when this example plugin is installed
+    );
+    new WP_GitHub_Updater($config);
 }
